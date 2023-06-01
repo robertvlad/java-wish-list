@@ -1,62 +1,43 @@
 package org.lessons.java.christmas;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
 	
 	public static void main(String[] args) {
-
-		ArrayList<String> wishList = new ArrayList<String>();
-
-		System.out.print("*********************************************************");
-		System.out.print("- Welcome to your wish list! -");
-		System.out.print("*********************************************************\n\n");
-
-		Scanner scan = new Scanner(System.in);
-
-		addingElements(scan, wishList);
-
-		scan.close();
-
-		sortWishList(wishList);
-	}
-
-	public static void addingElements(Scanner scan, ArrayList<String> wishList) {
-
-		String choice = "";
-
-		do {
-
-			System.out.println("Enter a wish to add to the list: ");
-			String wishToAdd = scan.nextLine();
-
-			wishList.add(wishToAdd);
-
-			System.out.print("*********************************************************");
-
-			System.out.println("Elements of the wish list: " + wishList.size());
-
-			System.out.println("\nDo you wanna add another one? [Y/N]");
-			choice = scan.nextLine();
-
-			System.out.print("*********************************************************");
-
-		} while (choice.toLowerCase().equals("y"));
-
-	}
-
-	public static void sortWishList(ArrayList<String> wishList) {
-
-		System.out.println("Sorted list in alphabetical order: ");
-
-		Collections.sort(wishList);
-
-		for (Iterator<String> iterator = wishList.iterator(); iterator.hasNext();) {
-			String string = (String) iterator.next();
-			System.out.println(string);
+		
+		List<String> wishList = new ArrayList<>();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		int i = -1;
+		
+		while (i != 1) {
+			
+			System.out.println("Premere 0 per inserire un nuovo desiderio \nPremere 1 per stampare la lista");
+			i = Integer.parseInt(sc.nextLine());
+			
+			if (i < 0 || i > 1) {
+				
+				System.out.println("Errore, riprovare!");
+				continue;
+			}
+			
+			if (i == 0) {
+				
+				System.out.println("Qual'è il tuo desiderio?");
+				String desiderio = sc.nextLine();
+				
+				wishList.add(desiderio);
+				
+				System.out.println("La lunghezza della lista è " + wishList.size());
+			}
 		}
+		
+		System.out.println("Lista dei desideri -> " + wishList);
+		
+		sc.close();
 	}
 }

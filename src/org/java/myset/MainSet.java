@@ -8,15 +8,18 @@ public class MainSet {
 	
 	public static void main(String[] args) {
 		
-		Set<Integer> randNumbers = new HashSet<>();
-		Random rand = new Random();
+		Random rnd = new Random();
 		
-		while(randNumbers.size() < 5) {
+		Set<Integer> numeri = new HashSet<>();
+		
+		for (int i = 0; i < 5; i++) {
 			
-			int value = rand.nextInt(2, 13);
-			randNumbers.add(value);
+			int nr = rnd.nextInt(2, 13);
+			System.out.println(nr);
+			
+			numeri.add(nr);
 		}
-
-		System.out.println(randNumbers);
-	}	
+		
+		System.out.println("La lista dei numeri è: " + numeri);
+	}
 }
